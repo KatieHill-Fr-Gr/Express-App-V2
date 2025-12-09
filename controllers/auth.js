@@ -1,6 +1,8 @@
 import express from 'express'
 const router = express.Router()
 
+import User from '../models/user.js'
+
 
 router.get('/sign-up', (req, res) => {
     console.log(`Request: ${req.method} - ${req.originalUrl}`)
