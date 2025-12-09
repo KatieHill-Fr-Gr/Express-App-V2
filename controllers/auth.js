@@ -9,7 +9,7 @@ router.get('/sign-up', (req, res, next) => {
     res.json({ message: 'HIT SIGN UP ROUTE'})
 })
 
-router.get('/sign-in', (req, res, next) => {
+router.get('/sign-in', async (req, res, next) => {
     console.log(`Request: ${req.method} - ${req.originalUrl}`)
 
     const { identifier, password} = req.body
