@@ -4,6 +4,8 @@ const router = express.Router()
 import bcrypt from 'bcrypt'
 import User from '../models/user.js'
 import { generateToken } from '../utils/tokens.js'
+import { InvalidData } from '../utils/errorClasses.js'
+import { Unauthorized } from '../utils/errorClasses.js'
 
 
 router.post('/sign-up', async (req, res, next) => {
