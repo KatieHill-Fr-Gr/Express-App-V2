@@ -1,15 +1,17 @@
 import express from 'express'
 const router = express.Router()
 
+import bcrypt from 'bcrypt'
 import User from '../models/user.js'
+import { generateToken } from '../utils/tokens.js'
 
 
-router.get('/sign-up', (req, res, next) => {
+router.post('/sign-up', (req, res, next) => {
     console.log(`Request: ${req.method} - ${req.originalUrl}`)
     res.json({ message: 'HIT SIGN UP ROUTE'})
 })
 
-router.get('/sign-in', async (req, res, next) => {
+router.post('/sign-in', async (req, res, next) => {
     console.log(`Request: ${req.method} - ${req.originalUrl}`)
 
     const { identifier, password} = req.body
@@ -29,6 +31,7 @@ router.get('/sign-in', async (req, res, next) => {
 
         const token = generateToken(foundUser)    
         return res.status(201).json({ token: token})
+
     } catch (err) {
         console.log(err)
         next(err)
